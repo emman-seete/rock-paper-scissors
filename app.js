@@ -3,11 +3,11 @@ let computerScore = 0;
 
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * 3)
-    return (choice == 0) ? "Rock" : (choice == 1) ? "Paper" : "Scissors";
+    return (choice == 0) ? "rock" : (choice == 1) ? "paper" : "scissors";
 }
 
 function getHumanChoice(choice) {
-    return choice;
+    return choice.toLowerCase();
 }
 
 function playRound(humanChoice, computerChoice) {
