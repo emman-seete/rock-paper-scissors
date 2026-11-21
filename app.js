@@ -1,13 +1,17 @@
 let humanScore = 0;
 let computerScore = 0;
 
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 function getComputerChoice() {
     const choice = Math.floor(Math.random() * 3)
     return (choice == 0) ? "rock" : (choice == 1) ? "paper" : "scissors";
 }
 
-function getHumanChoice(choice) {
-    return choice;
+function getHumanChoice() {
+    return prompt("Rock, Paper, Scissors?");
 }
 
 function playRound(humanChoice, computerChoice) {
@@ -16,15 +20,24 @@ function playRound(humanChoice, computerChoice) {
     // Scissors beats Paper
 
     if (humanChoice == "rock" && computerChoice == "scissors") {
+        humanScore += 1;
         return "You win! Rock beats Scissors";
     } else if (humanChoice == "paper" && computerChoice == "rock") {
+        humanScore += 1;
         return "You win! Paper beats Rock";
     } else if (humanChoice == "scissors" && computerChoice == "paper") {
+        humanScore += 1;
         return "You win! Scissors beats Paper";
     } else {
-        return "You lose! " + computerChoice + " beats " + humanChoice;
+        if (humanChoice == computerChoice) {
+            return "Tied!";
+        } else {
+            computerScore += 1;
+            return "You lose! " + capitalize(computerChoice) + " beats " + capitalize(humanChoice);
+        }
     }
 }
 
-let humanChoice = prompt("Rock, Paper, Scissors?");
-console.log(playRound(getHumanChoice(humanChoice), getComputerChoice()));
+let humanSelection = getHumanChoice();
+let computerSelection = getComputerChoice();
+console.log(playRound(humanSelection, computerSelection));
