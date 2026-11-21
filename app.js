@@ -7,14 +7,24 @@ function getComputerChoice() {
 }
 
 function getHumanChoice(choice) {
-    return choice.toLowerCase();
+    return choice;
 }
 
 function playRound(humanChoice, computerChoice) {
-    return null;
+    // Rock beats Scissors
+    // Paper beats Rock
+    // Scissors beats Paper
+
+    if (humanChoice == "rock" && computerChoice == "scissors") {
+        return "You win! Rock beats Scissors";
+    } else if (humanChoice == "paper" && computerChoice == "rock") {
+        return "You win! Paper beats Rock";
+    } else if (humanChoice == "scissors" && computerChoice == "paper") {
+        return "You win! Scissors beats Paper";
+    } else {
+        return "You lose! " + computerChoice + " beats " + humanChoice;
+    }
 }
 
-console.log(getComputerChoice());
-
 let humanChoice = prompt("Rock, Paper, Scissors?");
-console.log(getHumanChoice(humanChoice));
+console.log(playRound(getHumanChoice(humanChoice), getComputerChoice()));
